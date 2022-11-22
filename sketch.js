@@ -1,10 +1,6 @@
-// Project Title
-// Your Name
-// Date
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
-
+// Mini-Game Collection (CS30 Major Project)
+// Nini Li
+// 11/22/2022
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -13,3 +9,4 @@ function setup() {
 function draw() {
   background(220);
 }
+
