@@ -22,6 +22,11 @@ function setupTiles() {
   }
 }
 
+//score counter 
+function winCount() {
+
+}
+
 //reset
 function keyPressed() {
   resetGame();
