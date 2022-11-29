@@ -11,7 +11,6 @@ Create a board game collection including Tic-Tac-Toe, Chess, Checkers, Connect 4
     - Aesthetics (HTML)
   - Chess
     - Two Player
-    - Display current player's possible steps for all pieces
     - Restart Game
     - Announce Winner
     - Aesthetics (HTML)
@@ -33,8 +32,11 @@ Create a board game collection including Tic-Tac-Toe, Chess, Checkers, Connect 4
   - All manual 2 player
   - Centered Canvas' throughout
   - Functioning Rules exclusive to the mini game
+  - Sound effects and background music
 
 ## Nice to Have List
+  - Chess
+    -  Display current player's possible steps for all pieces
   - Gomoku
     - Two Player
     - Player Display (White or Black)
