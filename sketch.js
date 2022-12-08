@@ -19,7 +19,7 @@ function setup() {
 function draw() {
   background(220);
   image(startPageImage, windowWidth/2, windowHeight/4, startPageImage.width * scalar, startPageImage.height * 2);
-  rect(width/2, height/2, )
+  rect(width/2, height/2, );
 }
 
 function mousePressed() {
