@@ -3,23 +3,27 @@
 // 11/22/2022
 
 //Start Page
-let startPageImage;
-let scalar = 2;
 let state = "start";
+let startBackImg;
+let optionBackImg;
 
 function preload() {
-  startPageImage = loadImage("startPageBackground.jpg");
+  startBackImg = loadImage("startPageBackground.jpg");
+  optionBackImg = loadImage("optionsBackground.jpg");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  imageMode(CENTER);
 }
 
 function draw() {
   background(220);
-  image(startPageImage, windowWidth/2, windowHeight/4, startPageImage.width * scalar, startPageImage.height * 2);
-  rect(width/2, height/2, );
+  if (state === "start") {
+    startScreen();
+  }
+  if (state === "main") {
+    image(optionBackImg, 0, 0, width, height);
+  }
 }
 
 function mousePressed() {
@@ -28,7 +32,8 @@ function mousePressed() {
   } 
 }
 
-function startButton() {
+function startScreen() {
+  image(startBackImg, 0, 0, width, height);
   if (mouseInsideRect(400, 700, 400, 550)) {
     fill("gray");
   }
@@ -38,7 +43,7 @@ function startButton() {
   rect(400, 400, 300, 150);
   fill("white");
   textSize(50);
-  text("Begin!", 480, 490);
+  text("START GAME!!", 480, 490);
 }
 
 function mouseInsideRect(left, right, top, bottom) {
