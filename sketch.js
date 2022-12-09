@@ -27,23 +27,24 @@ function draw() {
 }
 
 function mousePressed() {
-  if (state === "start" && mouseInsideRect(400, 700, 400, 550)) {
+  if (state === "start" && mouseInsideRect(width * 0.35, height, 600, 150)) {
     state = "main";
   } 
 }
 
 function startScreen() {
   image(startBackImg, 0, 0, width, height);
-  if (mouseInsideRect(400, 700, 400, 550)) {
+  if (mouseInsideRect(width * 0.35, height * 0.75 + 300, 400, 550)) {
     fill("gray");
   }
   else {
     fill("black");
   }
-  rect(400, 400, 300, 150);
+  rect(width * 0.35, height * 0.75, 500, 150);
   fill("white");
   textSize(50);
-  text("START GAME!!", 480, 490);
+  textFont("Times New Roman");
+  text("START GAME!!", width * 0.4, height * 0.87);
 }
 
 function mouseInsideRect(left, right, top, bottom) {
