@@ -7,11 +7,13 @@ let state = "start";
 let startBackImg;
 let optionBackImg;
 let startButtonImg;
+let cursorImg;
 
 function preload() {
   startBackImg = loadImage("startPageBackground.jpg");
   optionBackImg = loadImage("optionsBackground.jpg");
   startButtonImg = loadImage("startButton.png");
+  cursorImg = loadImage("cursor.png");
 }
 
 function setup() {
@@ -26,30 +28,24 @@ function draw() {
   if (state === "main") {
     image(optionBackImg, 0, 0, width, height);
   }
-}
-
-function mousePressed() {
-  if (state === "start" && mouseInsideRect(width * 0.35, height, 600, 150)) {
-    state = "main";
-  } 
+cursor(cursorImg, mouseX, mouseY);
 }
 
 function startScreen() {
+  imageMode(CORNER);
   image(startBackImg, 0, 0, width, height);
-  if (mouseInsideRect(width * 0.35, height * 0.75 + 300, 400, 550)) {
-    fill("gray");
-  }
-  else {
-    fill("black");
-  }
   image(startButtonImg, windowWidth * 0.33, windowHeight * 0.65, width * 0.4, height * 0.4);
-  fill("white");
+  fill("#463F3A");
   textSize(50);
   textFont("Times New Roman");
   text("START GAME!!", width * 0.4, height * 0.87);
 }
 
-function mouseInsideRect(left, right, top, bottom) {
-  return mouseX >= left && mouseX <= right &&
-         mouseY >= top && mouseY <= bottom;
+function startState() {
+  if (state === "start") {
+    startScreen();
+  }
+  if (state === "main") {
+    image(optionBackImg, 0, 0, width, height);
+  }
 }
