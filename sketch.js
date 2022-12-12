@@ -6,10 +6,12 @@
 let state = "start";
 let startBackImg;
 let optionBackImg;
+let startButtonImg;
 
 function preload() {
   startBackImg = loadImage("startPageBackground.jpg");
   optionBackImg = loadImage("optionsBackground.jpg");
+  startButtonImg = loadImage("startButton.png");
 }
 
 function setup() {
@@ -40,7 +42,7 @@ function startScreen() {
   else {
     fill("black");
   }
-  rect(width * 0.35, height * 0.75, 500, 150);
+  image(startButtonImg, windowWidth * 0.33, windowHeight * 0.65, width * 0.4, height * 0.4);
   fill("white");
   textSize(50);
   textFont("Times New Roman");
