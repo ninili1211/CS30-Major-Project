@@ -1,7 +1,12 @@
 //Connect Four
-let grid = [[1, 0, 1],
-  [1, 0, 1],
-  [0, 1, 0]];
+let grid = [[0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0]];
+
+let state = "red";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -9,38 +14,56 @@ function setup() {
 
 
 function draw() {
-  background(220);
   displayGrid(grid);
 }
 
 function mousePressed() {
   console.log(mouseX, mouseY);
-  let cellWidth = width / grid[0].length;
-  let cellHeight = height / grid.length;
+  let cellWidth = 100;
+  let cellHeight = 100;
 
   let x = Math.floor(mouseX/cellWidth);
   let y = Math.floor(mouseY/cellHeight);
 
-  if (grid[y][x] === 0) {
-    grid[y][x] = 1;
+  if (state === "red") {
+    if (grid[y][x] === 0) {
+      grid[y][x] = 1;
+    }
   }
-  else if (grid[y][x] === 1) {
-    grid[y][x] = 0;
+  
+  if (state === "yellow") {
+    if (grid[y][x] === 0) {
+      grid[y][x] = 2;
+    }
   }
 }
 
 function displayGrid(grid) {
-  let cellWidth = width / grid[0].length;
-  let cellHeight = height / grid.length;
+  let cellWidth = 100;
+  let cellHeight = 100;
   for (let y=0; y<grid.length; y++) {
     for (let x=0; x<grid[y].length; x++) {
-      if (grid[y][x] === 0) {
-        fill("white");
-      }
-      else if (grid[y][x] === 1) {
-        fill("black");
-      }
+      // if (grid[y][x] === 0) {
+      fill("#a2d2ff");
+      // }
+      // else if (grid[y][x] === 1) {
+      //   fill("red");
+      // }
+      // else if (grid[y][x] === 2) {
+      //   fill("yellow");
+      // }
       rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+    }
+  }
+  for (let y=0; y<grid.length; y++) {
+    for (let x=0; x<grid[y].length; x++) {
+      if (grid[y][x] === 1) {
+        fill("#fc7a57");
+        circle(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+      }
+      else if (grid[y][x] === 2) {
+        fill("#eefc57");
+      }
     }
   }
 }
