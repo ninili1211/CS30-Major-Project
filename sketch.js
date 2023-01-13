@@ -33,9 +33,11 @@ function draw() {
 }
 
 function startScreen() {
+  let startButtonX = windowWidth * 0.33;
+  let startButtonY = windowHeight * 0.75;
   imageMode(CORNER);
   image(startBackImg, 0, 0, width, height);
-  image(startButtonImg, windowWidth * 0.33, windowHeight * 0.75, width * 0.35, height * 0.2);
+  image(startButtonImg, startButtonX, startButtonY, width * 0.35, height * 0.2);
 }
 
 function startState() {
@@ -45,6 +47,12 @@ function startState() {
   if (state === "main") {
     image(optionBackImg, 0, 0, width, height);
   }
+}
+
+function mouseTouching(startButtonImg) {
+  let startButtonHoverX = windowWidth * 0.33;
+  let startButtonHoverY = windowHeight * 0.75;
+  image(startButtonHoverImg, startButtonHoverX, startButtonHoverY, width * 0.35, height * 0.2);
 }
 
 // function mouseTouching() {
