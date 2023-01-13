@@ -7,15 +7,11 @@ let state = "start";
 let startBackImg;
 let optionBackImg;
 let startButtonImg;
-let startButtonHoverImg;
-let cursorImg;
 
 function preload() {
   startBackImg = loadImage("startPageBackground.jpg");
   optionBackImg = loadImage("optionsBackground.jpg");
   startButtonImg = loadImage("startButton.png");
-  startButtonHoverImg = loadImage("startButtonHover.png");
-  cursorImg = loadImage("cursor.png");
 }
 
 function setup() {
@@ -27,9 +23,7 @@ function draw() {
   if (state === "start") {
     startScreen();
   }
-  if (state === "main") {
-    image(optionBackImg, 0, 0, width, height);
-  }
+  if (keyCode(32))
 }
 
 function startScreen() {
@@ -45,21 +39,13 @@ function startState() {
     startScreen();
   }
   if (state === "main") {
-    image(optionBackImg, 0, 0, width, height);
+    mainScreen;
   }
 }
 
-function mouseTouching(startButtonImg) {
-  let startButtonHoverX = windowWidth * 0.33;
-  let startButtonHoverY = windowHeight * 0.75;
-  image(startButtonHoverImg, startButtonHoverX, startButtonHoverY, width * 0.35, height * 0.2);
+function mainScreen() {
+  image(optionBackImg, 0, 0, width, height);
 }
-
-// function mouseTouching() {
-//     if (mouseX && mouseY === ) {
-//         image(startButtonImg,)
-//     }
-// }
 
 // //tic tac toe
 // // Tic Tac Toe
