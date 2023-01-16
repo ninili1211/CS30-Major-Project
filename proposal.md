@@ -16,7 +16,6 @@ Create a board game collection including Tic-Tac-Toe, Chess, Checkers, Connect 4
     - Aesthetics (HTML)
   - Checkers
     - Two Player
-    - Display Player's possible steps
     - Restart Game
     - Announce Winner
     - Aesthetics (HTML)
