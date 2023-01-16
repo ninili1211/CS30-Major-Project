@@ -69,5 +69,10 @@ function startScreen() {
 
 //main screen
 function mainScreen() {
+  
   image(mainPageBackImg, 0, 0, width, height);
+  image(chessButtonImg, windowWidth * 0.33, 0, width * 0.35, height * 0.2);
+  image(checkersButtonImg, 0, 0, width * 0.35, height * 0.2);
+  image(connectFourButtonImg, 0, 0, width * 0.35, height * 0.2);
+  image(ticTacToeButtonImg, 0, 0, width * 0.35, height * 0.2);
 }
