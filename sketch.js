@@ -11,6 +11,7 @@ let chessButtonImg;
 let checkersButtonImg;
 let connectFourButtonImg;
 let ticTacToeButtonImg;
+let titleImg;
 
 //preload images
 function preload() {
@@ -21,6 +22,7 @@ function preload() {
   checkersButtonImg = loadImage("checkersButton.png");
   connectFourButtonImg = loadImage("connectFourButton.png");
   ticTacToeButtonImg = loadImage("ticTacToeButton.png");
+  titleImg = loadImage("title.png");
 }
 
 //initial setup
@@ -63,16 +65,16 @@ function startScreen() {
   let startButtonX = windowWidth * 0.33;
   let startButtonY = windowHeight * 0.75;
   imageMode(CORNER);
+  // image(titleImg, 0, 0, width, height);
   image(startBackImg, 0, 0, width, height);
   image(startButtonImg, startButtonX, startButtonY, width * 0.35, height * 0.2);
 }
 
 //main screen
 function mainScreen() {
-  
   image(mainPageBackImg, 0, 0, width, height);
-  image(chessButtonImg, windowWidth * 0.33, 0, width * 0.35, height * 0.2);
-  image(checkersButtonImg, 0, 0, width * 0.35, height * 0.2);
-  image(connectFourButtonImg, 0, 0, width * 0.35, height * 0.2);
-  image(ticTacToeButtonImg, 0, 0, width * 0.35, height * 0.2);
+  image(chessButtonImg, windowWidth * 0.05, windowHeight * 0.03, width * 0.3, height * 0.4);
+  image(checkersButtonImg, windowWidth * 0.65, windowHeight * 0.03, width * 0.3, height * 0.4);
+  image(connectFourButtonImg, windowWidth * 0.05, windowHeight * 0.5, width * 0.3, height * 0.4);
+  image(ticTacToeButtonImg, windowWidth * 0.65, windowHeight * 0.5, width * 0.3, height * 0.4);
 }
