@@ -1,69 +1,173 @@
-//Connect Four
-let grid = [[0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0]];
-
-let state = "red";
+const cols = 7;
+const rows = 6;
+const w = 100;
+const dw = 80;
+const board = Array(6).fill().map(() =>Array(7).fill(0));
+let player = 1;
+let playerPos;
+let win = 0;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(cols*w,rows*w + w);
 }
-
-
-function draw() {
-  displayGrid(grid);
-}
-
-function mousePressed() {
-  console.log(mouseX, mouseY);
-  let cellWidth = 100;
-  let cellHeight = 100;
-
-  let x = Math.floor(mouseX/cellWidth);
-  let y = Math.floor(mouseY/cellHeight);
-
-  if (state === "red") {
-    if (grid[y][x] === 0) {
-      grid[y][x] = 1;
+function hasWon() {
+// Test Horizontal 
+  for(let j = 0; j < rows; j++) {
+    for (let i = 0;i <= cols-4; i++) {
+    const test = board[j][i];
+    if (test!= 0) {
+    let temp = true;
+    for(let k = 0; k < 4; k++) {
+    if(board[j][i+k] !== test) {
+    temp = false;
+    }
+    }
+ if(temp ==true) {
+      return true;
+ }
+    }   
+    }
+  }
+  // Test Vertical
+      for(let j = 0; j <=rows-4; j++) {
+      for(let i = 0; i < cols; i++) {
+      const test = board[j][i];
+      if(test != 0) {
+      let temp = true;
+      for(let k = 0; k < 4; k++) {
+      if (board[j+k][i] !== test) {
+      temp = false;
+      }
+      }
+        if(temp == true) {
+      return true;
+        }
+      }
+      }
+      }
+      // Test Diagonal
+      for(let j = 0; j <=rows-4; j++) {
+        for(let i = 0; i <= cols-4; i++) {
+          const test = board[j][i];
+          if ( test != 0) {
+            let temp = true;
+            for (let k = 0; k < 4; k++) {
+              if ( board[j+k][i+k] !== test) {
+                temp = false;
+              }
+            }
+            if (temp == true) {
+              return true;
+            }
+          }
+        }
+      }
+  
+  // Test Antidiagnol
+  for (let j = 0; j <= rows-4; j++) {
+    for(let i = 4; i < cols; i++) {
+      const test = board[j][i];
+      if(test != 0) {
+        let temp = true;
+      for(let k = 0; k < 4; k++) {
+        if(board[j+k][i-k] !== test) {
+          temp = false;
+        }
+      }
+        if(temp == true) {
+          return true;
+        }
+      }
     }
   }
   
-  if (state === "yellow") {
-    if (grid[y][x] === 0) {
-      grid[y][x] = 2;
+  return false;
+}
+
+function draw() {
+  background(225,225,0);
+
+playerPos = floor(mouseX/w)
+stroke(0);
+  fill(255);
+  rect(-1,-1,width + 2,w);
+  for(let j = 0; j < rows; j++) {
+    for (let i = 0; i < cols; i++) {
+      fill(255);
+      if (board[j][i] ==1) {
+        fill(0,0,255);
+      } else if (board[j][i] ==2) {
+        fill(255,0,0);
+      }
+      ellipse(i*w + w/2, j*w + 3*w/2, dw);
     }
+  }
+  stroke(102,102,0);
+        for(let x = w; x < width; x += w) {
+      line(x,w,x,height);
+        }
+stroke(0);
+if (player ==1) {
+fill (0,0,255);
+} else if (player ==2) {
+  fill(255,0,0);
+}
+  ellipse((playerPos +0.5) *w,w/2,dw);
+  
+  if(win != 0) {
+    noStroke();
+    fill(0);
+    if(win ==1) {
+      fill(0,0,255);
+    } else if (win ==2) {
+      fill(255,0,0);
+    }
+    textAlign(CENTER,CENTER);
+    textSize(64);
+    if(win == 4) {
+      text("Game Over!" , width/2,w/2);
+    } else if (win == 3) {
+      text("It is a tie.",width/2,w/2);
+    } else {
+      text(`${win > 1 ? 'Red' : 'Blue'} won!`,width/2,w/2);
+    }
+    noLoop();
   }
 }
 
-function displayGrid(grid) {
-  let cellWidth = 100;
-  let cellHeight = 100;
-  for (let y=0; y<grid.length; y++) {
-    for (let x=0; x<grid[y].length; x++) {
-      // if (grid[y][x] === 0) {
-      fill("#a2d2ff");
-      // }
-      // else if (grid[y][x] === 1) {
-      //   fill("red");
-      // }
-      // else if (grid[y][x] === 2) {
-      //   fill("yellow");
-      // }
-      rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+function mousePressed() {
+  if (board[0][playerPos] != 0) {
+      win = 4;
+      }
+  
+  board[0][playerPos] = player;
+  let i = 0;
+  while(true) {
+    if( i >=  rows -1) {
+      break;
+    }
+    if(board[i+1][playerPos] !=0) {
+      break;
+    }
+    [board[i+1][playerPos], board[i][playerPos]] = [board[i][playerPos], board[i + 1][playerPos]];
+    i++;
+  }
+  
+  if(hasWon()) {
+    // console.log(`${player > 1 ? 'Red' : 'Blue'} won!`);
+    win = player;
+  }
+  let tie = true;
+  for(let j = 0; j < rows; j++) outer: {
+    for ( let i = 0; i < cols; i++) {
+      if(board[j][i] ==0) {
+        tie = false;
+      }
     }
   }
-  for (let y=0; y<grid.length; y++) {
-    for (let x=0; x<grid[y].length; x++) {
-      if (grid[y][x] === 1) {
-        fill("#fc7a57");
-        circle(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-      }
-      else if (grid[y][x] === 2) {
-        fill("#eefc57");
-      }
-    }
+  if(tie) {
+    win = 3;
   }
+  
+  player = 3 - player;
 }

@@ -78,3 +78,4 @@ function mainScreen() {
   image(connectFourButtonImg, windowWidth * 0.05, windowHeight * 0.5, width * 0.3, height * 0.4);
   image(ticTacToeButtonImg, windowWidth * 0.65, windowHeight * 0.5, width * 0.3, height * 0.4);
 }
+
