@@ -8,6 +8,7 @@ const dw = 48;
 const SELECT_STATE = 0;
 const MOVE_STATE = 1;
 let state = SELECT_STATE;
+
 let selectedI = -1;
 let selectedJ = -1;
 
