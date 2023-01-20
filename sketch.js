@@ -2,7 +2,7 @@
 // Nini Li
 // 11/22/2022
 
-//Start Page
+//global variables
 let state = "start";
 let startBackImg;
 let mainPageBackImg;
@@ -12,17 +12,31 @@ let checkersButtonImg;
 let connectFourButtonImg;
 let ticTacToeButtonImg;
 let titleImg;
+let chessBackImg;
 
 //preload images
 function preload() {
-  startBackImg = loadImage("startPageBackground.jpg");
-  mainPageBackImg = loadImage("mainPageBackground.jpg");
-  startButtonImg = loadImage("startButton.png");
-  chessButtonImg = loadImage("chessButton.png");
-  checkersButtonImg = loadImage("checkersButton.png");
-  connectFourButtonImg = loadImage("connectFourButton.png");
-  ticTacToeButtonImg = loadImage("ticTacToeButton.png");
-  titleImg = loadImage("title.png");
+  //start page
+  if (state === "start") {
+    startBackImg = loadImage("startPageBackground.jpg");
+    startButtonImg = loadImage("startButton.png");
+    titleImg = loadImage("title.png");
+  }
+
+  //main page
+  if (state === "main") {
+    mainPageBackImg = loadImage("mainPageBackground.jpg");
+    chessButtonImg = loadImage("chessButton.png");
+    checkersButtonImg = loadImage("checkersButton.png");
+    connectFourButtonImg = loadImage("connectFourButton.png");
+    ticTacToeButtonImg = loadImage("ticTacToeButton.png");
+  }
+
+  //chess page
+  if (state === "chess") {
+    chessBackImg = loadImage("chessBackground.jpg");
+  }
+
 }
 
 //initial setup
@@ -48,15 +62,19 @@ function keyPressed() {
   }
   if (keyCode === 49) {
     state = "chess";
+    playChess();
   }
   if (keyCode === 50) {
     state = "checkers";
+    playCheckers();
   }
   if (keyCode === 51) {
     state = "connect four";
+    playConnect4();
   }
   if (keyCode === 52) {
     state = "tic-tac-toe";
+    playTicTacToe();
   }
 }
 
@@ -79,3 +97,19 @@ function mainScreen() {
   image(ticTacToeButtonImg, windowWidth * 0.65, windowHeight * 0.5, width * 0.3, height * 0.4);
 }
 
+//chess game
+function playChess() {
+
+}
+
+function playCheckers() {
+
+}
+
+function playConnect4() {
+
+}
+
+function playTicTacToe() {
+
+}

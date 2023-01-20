@@ -4,8 +4,6 @@ Reflection
     2. It increased my love for computer science - The unfortunate fact is that I do not have a brain wired for the realm of computer science. Quite in fact, I registered for CS20 a week before the beginning of class with the mindset of "filling a spare." All to say, I struggled a lot with that course and this one, but I had also been enamoured with the subject since my entry to it. This was my first huge project, and I do not know why it is what it is, but after this experience, I know for a fact that my liking to computer science is now a passionate love and I hope to be able to code for the rest of my life, even if I do not study it in the future. 
     3. 
 
-
-
 Difficulties (and Advice to Future Self)
 - 
 
