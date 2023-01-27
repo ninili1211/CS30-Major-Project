@@ -1,7 +1,3 @@
-// Tic Tac Toe
-// Nini Li
-// 11/22/2022
-
 //global variables
 let tileSize = 133; 
 let tileRows = []; 

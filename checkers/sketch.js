@@ -1,7 +1,9 @@
+//no kills or html yet
+
 //variables 
-const cols = 8;
-const rows = 8;
-const board = Array(rows).fill().map(() => Array(cols).fill(0));
+const COLS = 8;
+const ROWS = 8;
+const board = Array(ROWS).fill().map(() => Array(COLS).fill(0));
 const w = 60;
 const dw = 48;
 const SELECT_STATE = 0;
@@ -17,28 +19,14 @@ let player = BLUE;
 
 //setup
 function setup() {
-  createCanvas(cols*w, rows*w);
-  for (let j = 0; j < 3; j++) {
-    for (let i = 0; i < cols; i++) {
-      if (i % 2 !== j % 2) {
-        board[j][i] = 2;
-      }
-    }
-  }
-  
-  for (let j = rows-3; j < rows; j++) {
-    for (let i = 0; i < cols; i++) {
-      if (i % 2 !== j % 2) {
-        board[j][i] = 1;
-      }
-    }
-  }
+  createCanvas(COLS*w, ROWS*w);
+  pieces();
 }
 
 function draw() {
   background(220);
-  for (let j = 0; j < rows; j++) {
-    for (let i = 0; i < cols; i++) {
+  for (let j = 0; j < ROWS; j++) {
+    for (let i = 0; i < COLS; i++) {
       noStroke();
       fill(51);
       if (i % 2 === j % 2) {
@@ -62,8 +50,22 @@ function draw() {
   }
 }
 
-function grid() {
+function pieces() {
+  for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < COLS; i++) {
+      if (i % 2 !== j % 2) {
+        board[j][i] = 2;
+      }
+    }
+  }
   
+  for (let j = ROWS-3; j < ROWS; j++) {
+    for (let i = 0; i < COLS; i++) {
+      if (i % 2 !== j % 2) {
+        board[j][i] = 1;
+      }
+    }
+  }
 }
 
 function mousePressed() {
